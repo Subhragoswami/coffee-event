@@ -49,7 +49,6 @@ public class UserService {
     public ResponseDto<String> saveUser(UserRequest userRequest){
         userValidator.requestValidator(userRequest);
         User user = mapper.convertValue(userRequest, User.class);
-        userDao.saveUser(user);
         sendSimpleEmail(user);
         return ResponseDto.<String>builder()
                 .status(0)
