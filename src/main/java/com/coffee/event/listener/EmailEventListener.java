@@ -31,7 +31,7 @@ public class EmailEventListener {
     private final TemplateEngine templateEngine;
     private final UserDao userDao;
 
-    @Async // Ensure this method is executed asynchronously
+    @Async
     @EventListener
     public void handleSendEmailEvent(SendEmailEvent event) {
         User user = event.getUser();
@@ -54,11 +54,9 @@ public class EmailEventListener {
 
             mailSender.send(mimeMessage);
 
-            // Update emailReceivedAt field and save user
             LocalDateTime now = LocalDateTime.now();
             user.setEmailReceivedAt(convertToDateViaInstant(now));
-            // Save the user if necessary
-             userDao.saveUser(user);
+            userDao.saveUser(user);
 
         } catch (MessagingException e) {
             log.error("Error sending email: {}", e.getMessage());
