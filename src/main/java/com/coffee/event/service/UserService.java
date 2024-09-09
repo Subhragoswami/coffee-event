@@ -17,9 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.TemplateEngine;
 
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
@@ -38,9 +36,7 @@ public class UserService {
     private final ObjectMapper mapper;
     private final UserValidator userValidator;
     private final CsvUtil csvUtil;
-    private final JavaMailSender mailSender;
-    private final TemplateEngine templateEngine;
-    private final ApplicationEventPublisher eventPublisher; // Add ApplicationEventPublisher
+    private final ApplicationEventPublisher eventPublisher;
 
     public ResponseDto<String> saveUser(UserRequest userRequest) {
         userValidator.requestValidator(userRequest);
