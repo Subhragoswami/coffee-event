@@ -4,6 +4,7 @@ import com.coffee.event.service.UserService;
 import com.coffee.event.model.request.UserRequest;
 import com.coffee.event.model.response.ResponseDto;
 import com.coffee.event.model.response.UserResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
@@ -35,5 +36,11 @@ public class UserController {
     public ResponseDto<UserResponse> getAllUser(@PageableDefault Pageable pageable){
         log.info("getting all users");
         return userService.getALlUsers(pageable);
+    }
+
+    @PostMapping("/csv")
+    public ResponseDto<String> downloadCsv(HttpServletResponse response){
+        log.info("getting request for get all userDetails in CSV format");
+        return userService.downloadCsv(response);
     }
 }

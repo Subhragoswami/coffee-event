@@ -21,5 +21,7 @@ public final class ErrorConstants {
     public static String ALREADY_PRESENT_ERROR_MESSAGE = "{0} : {1} is already present.";
 
     public static String SYSTEM_ERROR_CODE = "500";
+    public static String MAIL_SEND_ERROR_CODE = "707";
+    public static String MAIL_SEND_ERROR_MESSAGE = "Error sending email";
 
 }
